@@ -16,7 +16,15 @@ const App = () => {
         Create
         </Link>
       </header>
-    </BrowserRouter>
+      <main className='sm:p-8 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]'> 
+        <Routes>
+          <Route path='/' element= {<Home />} />
+          <Route path='/create-post' element={<CreatePost/>}/>
+        </Routes>   
+      </main>
+    </BrowserRouter> 
+// main: py s vertical padding, calc special property:: full height: 100vh-73px:height of the nav bar
+
   )
 }
 
