@@ -51,7 +51,7 @@ const CreatePost = () => {
       <form className='mt-16 max-w-3xl' onSubmit={handleSubmit}>
         <div className='flex flex-col gap-5'>
           <FormField
-            label Name="Your name"
+            LableName="Your name"
             type="text"
             name="name"
             placeholder="Lionel Messi"
@@ -60,7 +60,7 @@ const CreatePost = () => {
           />
 
           <FormField
-            label Name="Prompt"
+            LableName="Prompt"
             type="text"
             name="prompt"
             placeholder="an armchair in the shape of an avocado"
