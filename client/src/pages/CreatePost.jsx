@@ -16,8 +16,13 @@ const CreatePost = () => {
     photo: ''
     //this will be an object with empty string
   })
-  const [genratingimg, Generatingimg] = useState(false); // used while contacting with api and waiting to get image
+  const [generatingImg, GeneratingImg] = useState(false); // used while contacting with api and waiting to get image
   const [loading, setLoading] = useState(false); //general loading
+
+  //btn for generating image
+  const generateImage = () => {
+
+  }
 
   //handleSubmmit arrow function for handling form's button
   const handleSubmit = () => {
@@ -70,6 +75,38 @@ const CreatePost = () => {
             handleSurpriseMe
           />
 
+          <div className='relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center'>
+              {form.photo ?(
+                <img 
+                src="form.photo" 
+                alt="form.prompt" 
+                className='w-full h-full object-contain'
+                />
+              ): (
+                <img 
+                src={preview} 
+                alt="preview" 
+                className='2-9/12 h-9/12 object-contain opacity-40'
+                />
+              )}
+
+              {generatingImg && (
+                <div className='absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg'>
+                  <Loader />
+                </div>
+              )}
+          </div>
+
+        </div>
+
+        <div className='mt-5 flex gap-5'>
+            <button
+              type='button'
+              onClick={generateImage}
+              className='text-white bg-green-700 font-medium rounded-md text-sm sm:w-auto px-5 py-2.5 w-full text-center'
+            >
+              {generatingImg ? 'Generating' : 'Generate'}
+            </button>
         </div>
       </form>
 
