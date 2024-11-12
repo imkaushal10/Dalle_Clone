@@ -30,13 +30,16 @@ const CreatePost = () => {
   }  
 
   //handleChange with evene e as a parameneter
+  //spread the entire form and get the required value
   const handleChange = (e) => {
-
+    setForm({...form, [e.target.name]: e.target.value})   
   }
 
-  // for handling SurpriseMe constant prompts
+  //for handling SurpriseMe constant prompts
+  //handling random prompt coming from the form.prompt, updating generation of new prompt everytime into prompt 
   const handleSurpriseMe = () => {
-
+    const randomPrompt = getRandomPrompt(form.prompt);
+    setForm({ ...form, prompt:randomPrompt})
   } 
   
 
@@ -105,8 +108,20 @@ const CreatePost = () => {
               onClick={generateImage}
               className='text-white bg-green-700 font-medium rounded-md text-sm sm:w-auto px-5 py-2.5 w-full text-center'
             >
-              {generatingImg ? 'Generating' : 'Generate'}
+              {generatingImg ? 'Generating...' : 'Generate'}
             </button>
+        </div>
+
+        <div className='mt-10'>
+          <p className='mt-10 text-[#666e75] text-[14px]'>
+            Once you have created the image you want, you can share it with the community.       
+          </p>
+          <button
+           type='submit'
+           className='mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center'
+          >
+            {loading ? 'Sharing...' : 'Share with the community'}
+          </button>
         </div>
       </form>
 
