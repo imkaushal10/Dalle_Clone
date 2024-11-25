@@ -16,12 +16,38 @@ const CreatePost = () => {
     photo: ''
     //this will be an object with empty string
   })
-  const [generatingImg, GeneratingImg] = useState(false); // used while contacting with api and waiting to get image
+  const [generatingImg, setGeneratingImg] = useState(false); // used while contacting with api and waiting to get image
   const [loading, setLoading] = useState(false); //general loading
 
   //btn for generating image
-  const generateImage = () => {
+  const generateImage = async () => {
+    if(form.prompt){
+      alert(prompt);
+      // try {
+      //   setGeneratingImg(true);
+      //   //passing all of data to backend to get expected response (ai generated image)
+      //   const response = await fetch('http://localhost:8000/api/v1/dalle',{
+      //     method: 'POST', 
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({prompt: form.prompt}),
+      //   })
 
+      //   //to parse the data to be able to see the image
+      //   const data = await response.json();
+
+      //   //after getting response, setting it to the state. Separating photo from other data
+      //   setForm({...form, photo: `data.image/jpeg;base64}, ${data.photo}`})
+
+      // } catch (error) {
+      //   alert(error); 
+      // } finally {
+      //   setGeneratingImg(false);
+      // }
+    } else {
+      alert('Please enter a prompt');
+    }
   }
 
   //handleSubmmit arrow function for handling form's button
